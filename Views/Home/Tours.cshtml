@@ -1,0 +1,423 @@
+﻿
+@{
+    ViewBag.pageType = "profile-page";
+    ViewBag.Title = "Schedule Your Tour of the Temple Grounds";
+    ViewBag.SubTitle = "";
+    ViewBag.Background = "/img/garden.jpg";
+}
+
+@model GroupTimeSlotCombo
+<!--C# code goes up here ^^ you can dynamically change the title and top image on a per page basis-->
+<!--Stephan Peck-->
+<!--Assignment 8-->
+<!--Section3 Group7-->
+@*@model IEnumerable<RestaurantRate.Models.RestaurantModel>*@
+
+
+@*@model IQueryable<BookModel>*@
+
+@*@model TourListViewModel--------------------*@
+
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    
+
+    /* The popup form - hidden by default */
+    .form-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+    }
+
+        /* Full-width input fields */
+        .form-container input[type=text], .form-container input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            /* When the inputs get focus, do something */
+            .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        /* Set a style for the submit/login button */
+        .form-container .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
+</style>
+
+
+<div>
+    <div id="accordion">
+        @*Monday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Monday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/22/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Tuesday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Tuesday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/23/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Wednesday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Wednesday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/24/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Thursday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Thursday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/25/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Friday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Friday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/26/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Saturday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingSix">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        Saturday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/27/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+        @*Sunday Card + times*@
+        <div class="card">
+            <div class="card-header" id="headingSeven">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        Sunday
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordion">
+                <div class="card-body">
+                   
+                        @foreach (var x in Model.TimeSlots)
+                        {
+                            @if (x.Scheduled == false)
+                            {
+                                @if (x.TimeSlot.ToString("d") == "3/28/2021")
+                                {
+                                
+                                    <form asp-action="TourSummary" method="post">
+                                        <label asp-for="GroupInfo.SelectedAppointmentDay">@x.TimeSlot.ToShortTimeString()</label>
+                                        <!--You can unhide this... it just shows the date multiple times, not super necessary-->
+                                        <input asp-for="GroupInfo.SelectedAppointmentDay" value="@x.TimeSlot" name="SelectedTimeSlot" readonly hidden >
+                                        <input class="btn btn-info" type="submit" value="Select Time" id="submit" />
+                                    </form>
+                                    <br/>
+
+                                                                  
+                                }
+                            }
+
+                        }
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*form that has all inputs and submit button*@
+<div class="form-popup" id="myForm">
+    <form asp-action="SignUp" method="post" class="form-container">
+        <table>
+            <tr>
+                <th>
+                    <label asp-for="GroupInfo.GroupName" class="text-dark font-weight-bolder" style="font-size:20px">*Name of Group:</label>
+                </th>
+                <td>
+                    <input asp-for="GroupInfo.GroupName" type="text" placeholder="Group name..." style="border-radius:20px" />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="GroupInfo.GroupSize" class="text-dark font-weight-bolder" style="font-size:20px">*Size of Group:</label>
+
+                </th>
+                <td>
+                    <input asp-for="GroupInfo.GroupSize" type="number" placeholder="Group size..." style="border-radius:20px" />
+
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="GroupInfo.GroupSize" class="text-dark font-weight-bolder" style="font-size:20px">*Email Address:</label>
+                </th>
+                <td>
+                    <input asp-for="GroupInfo.Email" type="text" default=null placeholder="Email..." style="border-radius:20px" />
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    <label asp-for="GroupInfo.Phone" class="text-dark font-weight-bolder" style="font-size:20px">&nbsp Phone:</label>
+                </th>
+                <td>
+                    <input asp-for="GroupInfo.Email" type="text" placeholder="Phone..." style="border-radius:20px" />
+                </td>
+            </tr>
+            <tr><th><br /></th></tr>
+            <tr>
+                <th>
+                    <input class="btn btn-primary" type="submit" value="Submit" />
+                </th>
+                <th>
+                    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                </th>
+            </tr>
+            <div asp-validation-summary="All" class="text-danger"></div>
+        </table>
+    </form>
+</div>
+
+<script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+    function change(value) {
+        var title = document.getElementById('title');
+        title.innerHTML = value;
+    }
+</script>
+
+@*<div style="float:right" page-model="@Model.PagingInfo" page-action="Index" page-classes-enabled="true" page-class="btn"
+    page-class-normal="btn-light" page-url-category="@Model.CurrentCategory"
+    page-class-selected="btn-primary"></div>*@
+
+

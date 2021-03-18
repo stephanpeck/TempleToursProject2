@@ -1,0 +1,19 @@
+﻿
+
+
+@model Cart
+<div class="">
+    @if (Model.Lines.Count() > 0)
+    {
+        <small class="navbar-text">
+            @*<b>Your cart:</b>*@
+            @Model.Lines.Sum(x => x.Quantity) tour(s)
+            @*@Model.ComputeTotalSum().ToString("c")*@
+        </small>
+    }
+    <a class="btn btn-sm btn-secondary " asp-page="/Buy"
+       asp-route-returnurl="@ViewContext.HttpContext.Request.PathAndQuery()">
+        @* Icon *@
+        <i class="material-icons">today</i> View Appointments
+    </a>
+</div>

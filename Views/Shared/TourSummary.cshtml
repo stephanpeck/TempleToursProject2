@@ -1,0 +1,56 @@
+﻿
+
+@{
+    ViewBag.pageType = "profile-page";
+    ViewBag.Title = "Confirm Your Tour of the Temple Grounds";
+    ViewBag.SubTitle = "";
+    ViewBag.Background = "/img/garden.jpg";
+}
+
+
+
+@model TempleToursProject.Models.GroupInfo
+
+
+
+<div asp-validation-summary="All"></div>
+<form id="@Model.GroupInfoId" asp-action="ScheduledTours" method="post">
+    @*asp-page="/Buy"*@
+
+    <!--Submitter Name-->
+    
+    <input class="form-control" style="width:30%;" type="text" id="name" asp-for="@Model.GroupInfoId" required hidden><br><br>
+
+    <!--Restaurant Name-->
+    <label asp-for="@Model.GroupName"><b>Group Name:</b></label>
+    <input class="form-control" style="width:30%;" type="text" id="groupName" asp-for="@Model.GroupName" placeholder="Relief Society Gang" required><br><br>
+
+
+    <!--favoriteDish-->
+    <label asp-for="@Model.GroupSize"><b>Group Size:</b></label>
+    <input class="form-control" style="width:30%;" type="text" id="groupSize" asp-for="@Model.GroupSize" placeholder="3" min="1" max="1000" required><br><br>
+
+
+    <label asp-for="@Model.Email"><b>Email:</b></label>
+    <input class="form-control" style="width:30%;" type="text" id="email" asp-for="@Model.Email" placeholder="Spencer@Hilton.com" required><br><br>
+
+    <!--phone-->
+    <label asp-for="@Model.Phone"><b>Phone Number (Optional):</b></label>
+    <input class="form-control" style="width:30%;" type="tel" id="phone" asp-for="@Model.Phone" placeholder="801-555-5555"><br><br>
+
+
+    <label asp-for="@Model.SelectedAppointmentDay"><b>Selected Day:</b></label>
+    <input class="form-control" style="width:30%;" type="text" id="Time Slot" asp-for="@Model.SelectedAppointmentDay" value="@Model.SelectedAppointmentDay" placeholder="8pm" required readonly><br><br>
+
+    <label asp-for="@Model.SelectedAppointmentTime"><b>Selected Time:</b></label>
+    <input class="form-control" style="width:30%;" type="text" id="Time Slot" asp-for="@Model.SelectedAppointmentTime" value="@Model.SelectedAppointmentTime" placeholder="8pm" required readonly><br><br>
+    <br>
+
+
+    <!--Submit-->
+    <input class="btn btn-info" type="submit" value="Confirm Tour" id="submit" />
+
+</form>
+
+
+
